@@ -1,0 +1,26 @@
+[
+  {
+    "id": "04d2d0ea-f85b-4736-ac38-0f02af714ae1",
+    "name": "John Doe",
+    "status": 2,
+    "phone": "+584169051604",
+    "createdAt": "2016-02-28T16:41:41.090Z",
+    "updatedAt": "2016-02-28T16:41:41.090Z"
+  },
+  {
+    "id": "04d2d0ea-f85b-4736-ac38-0f02af714ae1",
+    "name": "Dolores O'riordan",
+    "status": 1,
+    "phone": "+1256354789",
+    "createdAt": "2016-02-28T16:41:41.090Z",
+    "updatedAt": "2016-02-28T16:41:41.090Z"
+  },
+  {
+    "id": "04d2d0ea-f85b-4736-ac38-0f02af714ae1",
+    "name": "Elton John",
+    "status": 8,
+    "phone": "+574553668974",
+    "createdAt": "2016-02-28T16:41:41.090Z",
+    "updatedAt": "2016-02-28T16:41:41.090Z"
+  }
+]

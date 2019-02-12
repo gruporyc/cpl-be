@@ -1,0 +1,81 @@
+#%RAML 1.0 ResourceType
+get:
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<responseGet>>
+          example: <<responseGetExample>>
+    500:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error500.json
+    400:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error400.json
+    401:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error401.json
+post:
+  body:
+    application/json:
+      type: <<request>>
+      example: <<requestExample>>
+  responses:
+    201:
+      body:
+        application/json:
+          type: <<responsePost>>
+          example: <<responsePostExample>>
+    500:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error500.json
+    400:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error400.json
+    401:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error401.json
+
+put:
+  body:
+    application/json:
+      type: <<request>>
+      example: <<requestExample>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<responsePut>>
+          example: <<responsePutExample>>
+    500:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error500.json
+    400:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error400.json
+    401:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error401.json
+    404:
+      body:
+        application/json:
+          type: <<errorObject>>
+          example: !include ../examples/Example-Error404.json

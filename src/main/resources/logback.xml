@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" debug="true">
+
+	<!-- The FILE and ASYNC appenders are here as examples for a production 
+		configuration -->
+
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<charset>utf-8</charset>
+			<Pattern>%d %-5level [%thread] %logger{0}: %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		<queueSize>512</queueSize>
+		<appender-ref ref="FILE" />
+	</appender>
+
+
+
+	<!-- CONSOLE Appender -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.ecerts.io" level="DEBUG" />
+
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+
+
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<logger name="javax.activation" level="WARN" />
+
+	<logger name="javax.mail" level="WARN" />
+
+	<logger name="javax.xml.bind" level="WARN" />
+
+	<logger name="ch.qos.logback" level="DEBUG" />
+
+	<logger name="com.codahale.metrics" level="WARN" />
+
+	<logger name="com.ryantenney" level="WARN" />
+
+	<logger name="com.sun" level="WARN" />
+
+	<logger name="com.zaxxer" level="WARN" />
+
+	<logger name="net.sf.ehcache" level="WARN" />
+
+	<logger name="org.apache" level="WARN" />
+
+	<logger name="org.springframework" level="DEBUG" />
+
+	<logger name="org.springframework.web" level="WARN" />
+
+	<logger name="org.springframework.security" level="DEBUG" />
+
+	<logger name="org.springframework.cache" level="WARN" />
+
+	<logger name="org.thymeleaf" level="WARN" />
+
+	<logger name="org.apache.http" level="DEBUG" />
+
+	<logger name="springfox" level="WARN" />
+
+	<logger name="sun.rmi" level="WARN" />
+
+	<logger name="sun.rmi.transport" level="WARN" />
+
+	<logger
+		name="org.springframework.security.web.util.matcher.AntPathRequestMatcher"
+		level="DEBUG" />
+
+	<logger name="org.springframework.security.web.FilterChainProxy"
+		level="DEBUG" />
+
+
+</configuration>

@@ -1,0 +1,10 @@
+#%RAML 1.0 Library
+types:
+  user:
+    type: !include ../data-types/DataType-User.raml
+    example: !include ../examples/Example-User.json
+  users:
+    type: array
+    items: user
+    description: List of users
+    example: !include ../examples/Example-Users.json

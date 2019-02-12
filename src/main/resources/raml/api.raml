@@ -1,0 +1,76 @@
+#%RAML 1.0
+title: Complaints platform services orchestrator
+version: 1.0.0
+
+documentation:
+ - title: API Description
+   content: |
+     This RAML describes all functionalities that this service expose.
+ - title: Version
+   content: |
+     1.0.0
+uses: 
+  common: libraries/Library-Common.raml
+  test: libraries/Library-Test.raml
+  users: libraries/Library-Users.raml
+
+traits:
+  pageable: !include traits/Trait-Pageable.raml
+      
+resourceTypes: 
+  collection-test: !include resource-types/ResourceType-CollectionTest.raml
+  collection-html: !include resource-types/ResourceType-CollectionHtml.raml
+  collection-item: !include resource-types/ResourceType-CollectionItem.raml
+  collection: !include resource-types/ResourceType-Collection.raml
+  
+###########################################################################################        
+# endpoints        
+###########################################################################################
+/v1:
+  /console:
+    description: Retrieve the RAML API endpoints definition
+    type: {
+      collection-html: {
+        errorObject: common.error
+      }
+    }
+  /hello:
+    description: Retrieve a basic test message from backend
+    type: { 
+      collection-test: {  
+        response: test.helloResponse,
+        responseExample: "Hello John doe! I am the search api...",
+        errorObject: common.error
+      }
+    }
+  /users:
+    get:
+      is: [pageable]
+    description: Users management
+    type: {
+      collection: {
+        request: users.user,
+        requestExample: !include examples/Example-User.json,
+        responseGet: users.users,
+        responseGetExample: !include examples/Example-Users.json,
+        responsePost: common.simpleResponse,
+        responsePostExample: !include examples/Example-ResourceCreated.json,
+        responsePut: common.simpleResponse,
+        responsePutExample: !include examples/Example-ResourceUpdated.json,
+        errorObject: common.error
+      }
+    }
+    /{user-id}:
+      uriParameters:
+        user-id:
+          type: string
+          description: Universal identifier for users
+      type: {
+        collection-item: {
+          response: users.user,
+          responseDelete: common.simpleResponse,
+          responseDeleteExample: !include examples/Example-ResourceDeleted.json,
+          responseExample: !include examples/Example-User.json,
+          errorObject: common.error
+        }
+      }

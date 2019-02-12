@@ -1,0 +1,29 @@
+#################################################################################################################
+#
+# IMPORTANT: This docker configuration must be use only for local execution and test purposes. PLEASE NOT APPLY THIS
+# DOCKER DEPLOYMENT IN ANY CLOUD SERVER.
+#
+#################################################################################################################
+
+
+version: '3.0'
+
+services:
+##################################################################################################################
+############################################ Application container ################################################
+  cpl-user-api:
+    image: tomcat:8
+# Update container name with your own project proper container name (project-service-type)
+    container_name: cpl-orchestrator-be
+# Update this volume link with your own .war generated file
+    volumes:
+      - ${PWD}/target/cpl.be.war:/usr/local/tomcat/webapps/api.war
+    restart: always
+# You should create your own env variables to setup your app
+    environment:
+      USER_API_SERVICE_URI: http://localhost:5001/api/v1/
+# You must be sure that each application is dispatched by a different port to avoid service crash
+    ports:
+      - 5000:8080
+volumes:
+  db_data:
